@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Tron</string>
+
+    <string name="droite">Droite</string>
+    <string name="gauche">Gauche</string>
+    <string name="score">Score: </string>
+
+</resources>
