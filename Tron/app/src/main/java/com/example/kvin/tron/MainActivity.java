@@ -81,8 +81,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void initialiserMatriceNull() {
-        for (int largeur = 1; largeur < 7; largeur++) {
-            for (int longueur = 1; longueur < 13; longueur++) {
+        for (int largeur = 0; largeur < 6; largeur++) {
+            for (int longueur = 0; longueur < 12; longueur++) {
                 matrice[largeur][longueur] = 0;
             }
         }
