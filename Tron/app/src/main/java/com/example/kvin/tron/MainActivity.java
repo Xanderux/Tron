@@ -12,6 +12,8 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import java.util.Timer;
+
 public class MainActivity extends AppCompatActivity {
     public RelativeLayout fenetreprincipale;
     public int matrice[][] = new int[7][20];
@@ -28,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     public TextView Score1;
     public TextView Score2;
 
-
+    public Jeu jeu ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +47,39 @@ public class MainActivity extends AppCompatActivity {
         Score1 = (TextView) findViewById(R.id.scorej);
         Score2 = (TextView) findViewById(R.id.scorej2);
 
+
+
+
         ButDroitJ1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        ButDroitJ2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+            }
+        });
+
+        ButDroitJ1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        ButGaucheJ1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        ButGaucheJ2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -60,23 +94,11 @@ public class MainActivity extends AppCompatActivity {
         super.onWindowFocusChanged(hasFocus);
         initialiserMatriceNull();
 
-        matrice[0][1] = 1;
-        matrice[1][1] = 2;
-        matrice[2][1] = 1;
-        matrice[3][1] = 2;
-        matrice[4][1] = 1;
-        matrice[5][1] = 2;
+        jeu = new Jeu();
 
 
-        matrice[0][2] = 2;
-        matrice[0][3] = 1;
-        matrice[0][4] = 2;
-        matrice[0][5] = 1;
-        matrice[0][6] = 2;
+        tours(jeu.getJ1(), jeu.getJ2());
 
-
-       // matrice[1][2] = 2;
-       // matrice[4][5] = 2;
         parcoursMatrice();
     }
 
@@ -89,8 +111,20 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void tours(Serpent J1, Serpent J2){
+
+        while(!jeu.getFinPartie()) {
+            J1.deplacement();
+            J2.deplacement();
+           // Log.i("coor tete i : ",Integer.toString( J1.getTeteI()));
+            matrice[5][3] = 1;
+            matrice[J2.getTeteI()][J2.getTeteJ()] = 2;
+
+        }
+    }
+
    public void parcoursMatrice(){
-       tailleCase = (fenetreprincipale.getWidth()) / 6;
+       tailleCase = (fenetreprincipale.getWidth()) / 7;
        for (int largeur = 0; largeur < 6; largeur++) {
            for (int longueur = 0; longueur < 12; longueur++) {
                if(matrice[largeur][longueur]!=0){
